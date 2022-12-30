@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons'; 
 import { LinearGradient } from 'expo-linear-gradient';
 
-
+//<FontAwesome name="sort-alpha-desc" size={24} color="black" /> // sort in descending order
 
 const Index= () => {
     const [search, setSearch] = useState('')
@@ -12,6 +12,7 @@ const Index= () => {
     const [data, setData] = useState([])
     const [prevData, setPrevData] = useState([])
     const [sort, setSort] = useState([])
+    const [toggle, setToggle] = useState(true)
     const listRef = useRef()
 
     useEffect(() => {
@@ -72,14 +73,24 @@ const Index= () => {
                     )}
                     </View>
 
-                <TouchableOpacity style={styles.rightWrapper}
+                {toggle == true ? <TouchableOpacity style={styles.rightWrapper}
                 onPress={() => {
                     let sortList = data.sort((a,b) => a.title> b.title ? 1 : -1);
                      setSort(sortList);
                     listRef.current.scrollToIndex({animated: true, index: 0});
+                    setToggle(false)
                 }}>
                     <FontAwesome name="sort-alpha-asc" size={24} color="black" />
-                </TouchableOpacity>
+                </TouchableOpacity> :
+                <TouchableOpacity style={styles.rightWrapper}
+                onPress={() => {
+                    let sortList = data.sort((a,b) => b.title> a.title ? 1 : -1);
+                     setSort(sortList);
+                    listRef.current.scrollToIndex({animated: true, index: 0});
+                    setToggle(true)
+                }}>
+                    <FontAwesome name="sort-alpha-desc" size={24} color="black" />
+                </TouchableOpacity>}
             </View>
             <FlatList
             data={data}
