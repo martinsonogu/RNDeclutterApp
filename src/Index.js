@@ -1,10 +1,9 @@
 import React, { useState, useRef,  useEffect } from 'react'
-import { View, TextInput , StyleSheet, SafeAreaView, Platform, TouchableOpacity, FlatList, Image, Text, Modal} from 'react-native'
+import { View, TextInput , StyleSheet, SafeAreaView, Platform, TouchableOpacity, FlatList, Image, Text} from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'; 
 import { EvilIcons } from '@expo/vector-icons'; 
 import { LinearGradient } from 'expo-linear-gradient';
 
-//<FontAwesome name="sort-alpha-desc" size={24} color="black" /> // sort in descending order
 
 const Index= () => {
     const [search, setSearch] = useState('')
@@ -43,7 +42,7 @@ const Index= () => {
                 colors={['#448AFF','#4c669f', '#3b5998', '#192f6a']}
                 style={styles.header}
                 >
-                     <Text style={styles.headerText}>"Quality products for half the price"</Text>
+                     <Text style={styles.headerText}>"Previously owned products for a good price"</Text>
             </LinearGradient>
                 
             </View>
